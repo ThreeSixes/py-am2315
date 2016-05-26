@@ -22,7 +22,7 @@ class am2315Wrapper():
         """
         
         # Set up AM2315 object.
-        self.__am2315 = am2315(am2315, i2cBusID)
+        self.__am2315 = am2315(am2315Addr, i2cBusID)
     
     def getTempHumid(self):
         """
