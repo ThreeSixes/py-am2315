@@ -16,16 +16,15 @@ class am2315:
     """
     am2315 is a class that supports communication with an I2C-connected AOSONG AM2315 encased temperature and humidity sensor. The constructor for this class accepts one argement:
     
-    am3215Addr: I2C address of the sensor, but will default to 0x5c if it's not specified.
+    am3215Addr: I2C address of the sensor, but will default to 0x5c if it's not specified. This defaults to 0x5c.
+    i2cBusID: Bus ID number that the sensor is attached to. This defaults to 1 (the default bus ID on newer Raspberry Pis.)
     """
 
     # The config variables are based on the AM2315 datasheet
-    #
-    
-    def __init__(self, am2315Addr = 0x5c):
+    def __init__(self, am2315Addr = 0x5c, i2cBusID = 1):
         # Set up I2C libraries
         self.__i2c = qI2c
-        self.__i2cMaster = qI2c.I2CMaster()
+        self.__i2cMaster = qI2c.I2CMaster(1)
         
         # Set global address var
         self.__addr = am2315Addr
